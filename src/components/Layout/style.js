@@ -1,4 +1,3 @@
-import { List, ListItem } from "@mui/material";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -32,12 +31,4 @@ export const Content = styled.div`
   overflow-y: auto;
 `;
 
-export const ListBar = styled(List)``;
 
-export const ItemBar = styled(ListItem)`
-  margin: 7px auto !important;
-  font-size: 15px;
-  svg {
-    margin-right: 5px;
-  }
-`;
