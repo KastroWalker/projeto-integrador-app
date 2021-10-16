@@ -1,18 +1,17 @@
 import ImageLogin from "../../assets/images/login.svg";
 import FormLogin from "../../components/FormLogin";
-import { StyleLogin, StyleImage, Title, NewAccount, LinkSingUp } from "./style";
+import { Container, Image, Title, NewAccount, LinkSingUp } from "./style";
 
 const Login = () => {
   return (
-    <StyleLogin>
+    <Container>
       <Title>Boas-vindas</Title>
-      <StyleImage src={ImageLogin} alt="Login" />
+      <Image src={ImageLogin} alt="Login" />
       <FormLogin />
       <NewAccount>
-        Não possui uma conta?{" "}
-        <LinkSingUp href="http://google.com">Criar</LinkSingUp>
+        Não possui uma conta? <LinkSingUp to="/cadastro">Criar</LinkSingUp>
       </NewAccount>
-    </StyleLogin>
+    </Container>
   );
 };
 
