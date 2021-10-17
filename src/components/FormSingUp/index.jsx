@@ -3,8 +3,10 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import useStylesInput from "../../helpers/styles";
 import { StyleForm } from "./style";
+import { createClient } from "../../clients/client";
 
-const FormSingUp = () => {
+const FormSingUp = (props) => {
+  const { setMessageError } = props;
   const inputStyle = useStylesInput();
   const [values, setValues] = useState({
     name: "",
@@ -40,8 +42,23 @@ const FormSingUp = () => {
     validateForm();
   };
 
-  const onSubmitForm = () => {
+  const onSubmitForm = async () => {
     validateForm();
+
+    try {
+      setMessageError("");
+
+      const newClient = await createClient({
+        ...values,
+        type_id: "1",
+      });
+
+      // eslint-disable-next-line no-console
+      console.log(newClient);
+    } catch (error) {
+      setMessageError("Erro ao criar usuário. Tente novamente!");
+      console.error(error);
+    }
   };
 
   return (
