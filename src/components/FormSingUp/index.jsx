@@ -3,8 +3,14 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import useStylesInput from "../../helpers/styles";
 import { StyleForm } from "./style";
+import { createClient } from "../../clients/client";
+import { createMerchant } from "../../clients/merchant";
+import { useUserContext } from "../../contexts/userContext/UserContext";
+import { useHistory } from "react-router";
 
-const FormSingUp = () => {
+const FormSingUp = ({ setMessageError, typeAccount }) => {
+  const { userContextActions } = useUserContext();
+  const history = useHistory();
   const inputStyle = useStylesInput();
   const [values, setValues] = useState({
     name: "",
@@ -40,8 +46,32 @@ const FormSingUp = () => {
     validateForm();
   };
 
-  const onSubmitForm = () => {
+  const onSubmitForm = async () => {
     validateForm();
+
+    try {
+      setMessageError("");
+      let newUser;
+
+      if (typeAccount == "client") {
+        newUser = await createClient(values);
+      } else {
+        newUser = await createMerchant(values);
+      }
+
+      if (newUser) {
+        userContextActions.setId(newUser.name);
+        userContextActions.setName(newUser.name);
+        userContextActions.setUsername(newUser.username);
+        userContextActions.setType(typeAccount);
+        history.push("/conta");
+      } else {
+        setMessageError("Erro ao criar usuário. Tente novamente!");
+      }
+    } catch (error) {
+      setMessageError("Erro ao criar usuário. Tente novamente!");
+      console.error(error);
+    }
   };
 
   return (
