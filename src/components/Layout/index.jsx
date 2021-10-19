@@ -12,8 +12,10 @@ import { Box } from "@mui/system";
 import { useState } from "react";
 import { Container, Content, DrawerHeader, Title, UserName } from "./style";
 import OptionsMenuClient from "../OptionsMenuClient";
+import { useUserContext } from "../../contexts/userContext/UserContext";
 
 const Layout = (props) => {
+  const { userContextState } = useUserContext();
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -38,11 +40,8 @@ const Layout = (props) => {
       <Content>{props.children}</Content>
       <Drawer anchor="left" open={open} onClose={() => handleDrawerOpen()}>
         <DrawerHeader>
-          <Avatar
-            alt="Cindy Baker"
-            src="https://cdn.pixabay.com/photo/2016/03/31/19/57/avatar-1295404_960_720.png"
-          />
-          <UserName>Username</UserName>
+          <Avatar alt="Cindy Baker" src={userContextState.avatar} />
+          <UserName>{userContextState.name}</UserName>
           <IconButton onClick={() => handleDrawerOpen()}>
             <ChevronLeftIcon />
           </IconButton>

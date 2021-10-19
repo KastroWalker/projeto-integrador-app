@@ -17,7 +17,7 @@ const SingUp = () => {
       </Title>
       {messageError && <Alert severity="error">{messageError}</Alert>}
       <Image src={ImageSingUp} alt="SingUp" />
-      <FormSingUp setMessageError={setMessageError} />
+      <FormSingUp setMessageError={setMessageError} typeAccount={typeAccount} />
       <HasAccount>
         Já possui uma conta? <LinkLogin to="/">Entrar</LinkLogin>
       </HasAccount>
