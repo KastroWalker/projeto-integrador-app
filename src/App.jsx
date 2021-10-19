@@ -5,6 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Layout from "./components/Layout";
 import SingUp from "./pages/SingUp";
@@ -25,6 +26,7 @@ const App = () => {
             <Layout>
               <Switch>
                 <Route path="/conta" component={Profile} />
+                <Route path="/home" component={Home} />
                 <Route path="*">
                   <Redirect to="/not-found" />
                 </Route>
