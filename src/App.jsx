@@ -13,28 +13,33 @@ import Profile from "./pages/Profile";
 import theme from "./styles/Theme";
 import NotFound from "./pages/NotFound";
 import { UserContextProvider } from "./contexts/userContext/UserContext";
+import { StoreContextProvider } from "./contexts/storeContext/StoreContext";
+import CreateStore from "./pages/CreateStore";
 
 const App = () => {
   return (
     <UserContextProvider>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <Switch>
-            <Route path="/" exact component={Login} />
-            <Route path="/cadastro" component={SingUp} />
-            <Route path="/not-found" component={NotFound} />
-            <Layout>
-              <Switch>
-                <Route path="/conta" component={Profile} />
-                <Route path="/home" component={Home} />
-                <Route path="*">
-                  <Redirect to="/not-found" />
-                </Route>
-              </Switch>
-            </Layout>
-          </Switch>
-        </Router>
-      </ThemeProvider>
+      <StoreContextProvider>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Switch>
+              <Route path="/" exact component={Login} />
+              <Route path="/cadastro" component={SingUp} />
+              <Route path="/not_found" component={NotFound} />
+              <Layout>
+                <Switch>
+                  <Route path="/conta" component={Profile} />
+                  <Route path="/nova_loja" component={CreateStore} />
+                  <Route path="/home" component={Home} />
+                  <Route path="*">
+                    <Redirect to="/not_found" />
+                  </Route>
+                </Switch>
+              </Layout>
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </StoreContextProvider>
     </UserContextProvider>
   );
 };

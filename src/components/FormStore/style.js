@@ -1,0 +1,15 @@
+import styled from "styled-components";
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  .MuiFormControl-root {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+`;
