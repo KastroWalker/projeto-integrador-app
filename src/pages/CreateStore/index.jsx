@@ -1,5 +1,6 @@
-import FormStore from "../../components/FormStore";
+// import FormStore from "../../components/FormStore";
 import styled from "styled-components";
+import FormAddress from "../../components/FormAddress";
 
 const Container = styled.div`
   width: 80%;
@@ -9,7 +10,8 @@ const Container = styled.div`
 const CreateStore = () => {
   return (
     <Container>
-      <FormStore />
+      {/* <FormStore /> */}
+      <FormAddress />
     </Container>
   );
 };

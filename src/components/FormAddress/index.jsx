@@ -1,8 +1,14 @@
 import Input from "../Input";
+import styled from "styled-components";
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 
 const FormAddress = () => {
   return (
-    <>
+    <Form>
       <Input
         label="Endereço"
         onChange={() => console.error("aqui")}
@@ -45,7 +51,7 @@ const FormAddress = () => {
         helperText={"teste"}
         value="teste"
       />
-    </>
+    </Form>
   );
 };
 
