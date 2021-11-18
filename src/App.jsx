@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import { UserContextProvider } from "./contexts/userContext/UserContext";
 import { StoreContextProvider } from "./contexts/storeContext/StoreContext";
 import CreateStore from "./pages/CreateStore";
+import Store from "./pages/Store";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
                   <Route path="/conta" component={Profile} />
                   <Route path="/nova_loja" component={CreateStore} />
                   <Route path="/home" component={Home} />
+                  <Route path="/loja" component={Store} />
                   <Route path="*">
                     <Redirect to="/not_found" />
                   </Route>
